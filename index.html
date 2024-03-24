@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <title>Encriptador de texto</title>
+  </head>
+
+  <body>
+    <header>
+      <h1>Encriptador/Desencriptador de texto</h1>
+    </header>
+
+    <main>
+      <section class="input-area">
+        <div class="container">
+          <textarea id="inputText" placeholder="Ingresa el texto aquí..."></textarea>
+
+          <p class="instruction"><i class="fas fa-info-circle"></i> Usa sólo letras minúsculas y sin acentos.</p>
+          
+          <div class="container_buttons">
+            <button onclick="encrypt()">Encriptar</button>
+            <button onclick="decrypt()">Desencriptar</button>
+            <button onclick="reset()">Reiniciar</button>
+          </div>
+        </div>
+      </section>
+    
+      <section class="result-area">
+        <div id="result">
+          <div id="imageContainer">
+            <img id="resultImage" src="img/crypt.png" alt="Resultado de encriptación/desencriptación">
+          </div>
+          
+          <div id="textContainer"></div>
+          
+          <div class="container_buttons">
+            <button id="copyButton" onclick="copyText()">Copiar</button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy Desarrollado por Carlos J. Nieto | 2024</p>
+      <a href="https://github.com/CJ-Nieto"><i class="fab fa-github"></i></a>
+      <a href="https://www.linkedin.com/in/cjnieto/"><i class="fab fa-linkedin"></i></a>
+    </footer>
+
+    <script src="script.js"></script>
+
+  </body>
+</html>
