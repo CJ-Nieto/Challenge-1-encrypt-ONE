@@ -12,9 +12,9 @@ function validateInput(input) {
     return false;
   }
 
-  // Verifica si el texto del botón es solo espacios
+  // Verifica si el texto del botón no contiene caracteres
   if (!input.trim()) {
-    alert('El texto no debe ser solo espacios.');
+    alert('Ingresa un texto, letra o palabra.');
     return false;
   }
 
