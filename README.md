@@ -1,3 +1,7 @@
+<p align="center">
+  <img width="auto" height="auto" src="img/Badge_ONE.png">
+</p>
+
 # Encriptador de texto - Oracle y Alura Challenge
 
 Este repositorio contiene mi solución para el desafío de encriptación de texto propuesto por Alura para Oracle Next Generation (ONE).
