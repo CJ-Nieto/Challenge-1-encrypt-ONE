@@ -21,6 +21,70 @@ function validateInput(input) {
   return true;
 }
 
+/*  Definición de los mapas de sustitución.
+    Esto permitirá asociar cada letra o palabra
+    con su equivalente encriptado y viceversa.
+*/
+const encriptMap = [
+  "i",
+  "e",
+  "a",
+  "o",
+  "u"
+];
+const decriptMap = [
+  "imes",  // i
+  "enter", // e
+  "ai",    // a
+  "ober",  // o
+  "ufat"   // u
+];
+
+/*  Encriptación de caracter (encryptChar):
+    ° Esta función toma un caracter ("char")
+      y dos arreglos ("de" y "a").
+    ° "de" representa las letras normales (sin encriptar),
+      y "a" representa las letras encriptadas.
+    ° La función busca el caracter en el arreglo "de".
+      Si lo encuentra, devuelve su equivalente en el arreglo "a".
+      Si no lo encuentra, devuelve el mismo caracter sin cambios.
+*/
+function encryptChar(char, de, a) {
+  for (let i = 0; i < de.length; i++) {
+    if (char === de[i])
+      return a[i];
+    }
+  return char;
+}
+
+/*  Encriptación de texto (encryptText):
+    ° Esta función toma una cadena de texto ("text").
+    ° Itera sobre cada caracter en la cadena y llama a "encryptChar"
+      para encriptar cada caracter individualmente.
+    ° Concatena los caracteres encriptados para formar la cadena encriptada completa.
+*/
+function encryptText(text) {
+  let result = "";
+  for (const val of text) {
+    result += encryptChar(val, encriptMap, decriptMap);
+  }
+  return result;
+}
+
+/*  Desencriptación (decryptEnd):
+    ° Esta función toma una cadena de texto encriptada ("text").
+    ° Itera sobre los elementos del arreglo "decriptMap".
+    ° Reemplaza todas las apariciones de las palabras encriptadas
+      por sus equivalentes desencriptadas en la cadena "text".
+    ° Devuelve la cadena desencriptada.
+*/
+function decryptEnd(text) {
+  for (let i = 0; i < decriptMap.length; i++) {
+    text = text.replaceAll(decriptMap[i], encriptMap[i]);
+    }
+  return text;
+}
+
 function encrypt() {
   // Código de encriptación
   var input = document.getElementById('inputText').value;
@@ -29,11 +93,9 @@ function encrypt() {
     return;
   }
 
-  var encrypted = input.replace(/e/g, 'enter')
-                      .replace(/i/g, 'imes')
-                      .replace(/a/g, 'ai')
-                      .replace(/o/g, 'ober')
-                      .replace(/u/g, 'ufat');
+  // Llama a la función de encriptación
+  var encrypted = encryptText(input);
+
   document.getElementById('textContainer').innerText = encrypted;
 
   // Oculta la imagen
@@ -51,11 +113,9 @@ function decrypt() {
     return;
   }
   
-  var decrypted = input.replace(/enter/g, 'e')
-                       .replace(/imes/g, 'i')
-                       .replace(/ai/g, 'a')
-                       .replace(/ober/g, 'o')
-                       .replace(/ufat/g, 'u');
+  // Llama a la función de desencriptación
+  var decrypted = decryptEnd(input);
+
   document.getElementById('textContainer').innerText = decrypted;
 
   // Oculta la imagen
@@ -80,7 +140,7 @@ function reset(){
   location.reload();
 
   /*  El uso del siguiente código genera que se mueva la imagen dentro
-      del contenedor #result, por lo que se optó por recargar la página
+      del contenedor #result, por lo que se optó por recargar/reiniciar la página
 
   // Limpia el texto de entrada y de salida
   document.getElementById('inputText').value = '';
